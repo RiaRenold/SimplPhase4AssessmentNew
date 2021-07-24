@@ -54,7 +54,7 @@ public class TestCalculatorApp {
 			driver.findElement(By.id("com.android.calculator2:id/eq")).click();
 //			String result=driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText();
 			String result=driver.findElement(By.id("com.android.calculator2:id/formula")).getText();
-			Assert.assertEquals(14, result);
+			Assert.assertEquals("14", result);
 			System.out.println("Result is "+result);
 
 		}
