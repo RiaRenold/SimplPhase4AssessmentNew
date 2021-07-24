@@ -3,19 +3,20 @@ package com.appium.test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
-import junit.framework.Assert;
+
 
 public class TestCalculatorApp {
 	public static AndroidDriver<WebElement> driver;
-	@Before
+	@BeforeClass
 		public void setUp() throws InterruptedException, MalformedURLException {
 			DesiredCapabilities cap = new DesiredCapabilities();
 
@@ -32,7 +33,7 @@ public class TestCalculatorApp {
 		driver= new AndroidDriver<WebElement>(url, cap);
 						
 		}
-		@After
+		@AfterClass
 		public void tearDown() throws Exception {
 			driver.quit();
 		}
@@ -40,16 +41,20 @@ public class TestCalculatorApp {
 		
 		@Test
 		public void addOperation() throws InterruptedException {
-			driver.findElement(By.id("com.google.android.calculator:id/digit_8")).click();
+//			driver.findElement(By.id("com.google.android.calculator:id/digit_8")).click();
+			driver.findElement(By.id("com.android.calculator2:id/digit_2")).click();
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("//android.widget.Button[@content-desc='plus']")).click();
+//			driver.findElement(By.xpath("//android.widget.Button[@content-desc='plus']")).click();
+			driver.findElement(By.id("com.android.calculator2:id/op_mul")).click();
 			Thread.sleep(2000);
-			driver.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+//			driver.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+			driver.findElement(By.id("com.android.calculator2:id/digit_7")).click();
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("//android.widget.Button[@content-desc='equals']")).click();
-			
-			String result=driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText();
-			Assert.assertEquals("13", result);
+//			driver.findElement(By.xpath("//android.widget.Button[@content-desc='equals']")).click();
+			driver.findElement(By.id("com.android.calculator2:id/eq")).click();
+//			String result=driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText();
+			String result=driver.findElement(By.id("com.android.calculator2:id/formula")).getText();
+			Assert.assertEquals(14, result);
 			System.out.println("Result is "+result);
 
 		}
