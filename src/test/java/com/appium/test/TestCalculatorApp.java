@@ -17,16 +17,19 @@ public class TestCalculatorApp {
 	public static AndroidDriver<WebElement> driver;
 	@Before
 		public void setUp() throws InterruptedException, MalformedURLException {
-//			URL URL = new URL("http://127.0.0.1:4723/wd/hub");
-			URL URL = new URL("hhttp://0.0.0.0:4444/wd/hub");
 			DesiredCapabilities cap = new DesiredCapabilities();
-			cap.setCapability("platformName", "Android");
-			cap.setCapability("platformVersion", "5.1.1");
-			cap.setCapability("appPackage", "com.google.android.calculator");
-			cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+
+		cap.setCapability("deviceName", "nexus_5_7.1.1");
+		cap.setCapability("browserName", "android");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("appPackage", "com.android.calculator2");
+		cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+
+		// This is Docker
+		URL url = new URL("http://0.0.0.0:4444/wd/hub");
 			
 			
-			driver= new AndroidDriver<WebElement>(URL, cap);
+		driver= new AndroidDriver<WebElement>(url, cap);
 						
 		}
 		@After
