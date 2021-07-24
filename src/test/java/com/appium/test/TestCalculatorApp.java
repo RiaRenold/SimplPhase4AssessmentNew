@@ -41,18 +41,18 @@ public class TestCalculatorApp {
 		
 		@Test
 		public void addOperation() throws InterruptedException {
-//			driver.findElement(By.id("com.google.android.calculator:id/digit_8")).click();
+
 			driver.findElement(By.id("com.android.calculator2:id/digit_2")).click();
 			Thread.sleep(2000);
-//			driver.findElement(By.xpath("//android.widget.Button[@content-desc='plus']")).click();
+
 			driver.findElement(By.id("com.android.calculator2:id/op_mul")).click();
 			Thread.sleep(2000);
-//			driver.findElement(By.id("com.google.android.calculator:id/digit_5")).click();
+
 			driver.findElement(By.id("com.android.calculator2:id/digit_7")).click();
 			Thread.sleep(2000);
-//			driver.findElement(By.xpath("//android.widget.Button[@content-desc='equals']")).click();
+
 			driver.findElement(By.id("com.android.calculator2:id/eq")).click();
-//			String result=driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText();
+
 			String result=driver.findElement(By.id("com.android.calculator2:id/formula")).getText();
 			Assert.assertEquals("14", result);
 			System.out.println("Result is "+result);
